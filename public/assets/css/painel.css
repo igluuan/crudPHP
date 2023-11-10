@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+.nav {
+    height: 50px;
+    background-color: #3dbc40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.box-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.box-user>h1 {
+    font-size: 1.3em;
+}
+
+.new-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+a {
+    background-color: #449e48;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.addCliente {
+    background-color: #3dbc40;
+    font-size: 1.3em;
+    margin-top: 20px;
+    border: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.diviser-line {
+    margin: 50px auto 30px auto;
+    width: 90%;
+    border: 0.1rem solid #2f313650;
+}
+
+.painel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.painel > h2{
+    margin-bottom: 10px;
+}
+table {
+    border-collapse: collapse;
+    width: 70%;
+}
+th{
+    font-size: 1.5em;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+}
+
+/*add cliente*/
+.form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1.3em;
+}
+
+input {
+    width: 300px;
+    height: 20px;
+    font-size: 1.5em;
+    padding: 5px;
+}
+
+.btn-adicionar {
+    width: 100%;
+    background-color: #2b35af;
+    color: white;
+    margin-top: 10px;
+    font-size: 1.5em;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* Estilos para o modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    width: 35%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #888;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
