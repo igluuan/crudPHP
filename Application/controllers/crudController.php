@@ -4,9 +4,11 @@ include('C:\xampp\htdocs\login-php\Application\models\clienteModel.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cliente = new Cliente();
-    $cliente->setNome($_POST['nome']);
-    $cliente->setIdade($_POST['idade']);
-    $cliente->setEmail($_POST['email']);
+
+    // Verifica se os campos do formulário foram definidos antes de acessá-los
+    $cliente->setNome(isset($_POST['nome']) ? $_POST['nome'] : '');
+    $cliente->setIdade(isset($_POST['idade']) ? $_POST['idade'] : '');
+    $cliente->setEmail(isset($_POST['email']) ? $_POST['email'] : '');
 
     // Chamar a função para adicionar cliente ao banco de dados
     adicionarCliente($cliente->getNome(), $cliente->getIdade(), $cliente->getEmail());
@@ -46,9 +48,7 @@ function adicionarCliente($nome, $idade, $email)
     } else {
         echo "Erro ao adicionar cliente: " . mysqli_error($conexao);
     }
-
 }
-
 
 function obterClientes() {
     global $host, $usuario, $senha, $banco_de_dados;
@@ -68,8 +68,6 @@ function obterClientes() {
         $clientes[] = $row;
     }
 
-
     return $clientes;
 }
-
 ?>

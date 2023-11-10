@@ -1,20 +1,27 @@
 <?php
 include( 'C:\xampp\htdocs\login-php\Application\controllers\crudController.php');
 session_start();
-// Redireciona para a página de login se o usuário não estiver autenticado
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
 }
+
 $username = $_SESSION['user'];
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit']) && $_POST['submit'] == 1) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submitForm']) && $_POST['submitForm'] == 1) {
     $nome = $_POST['nome'];
     $idade = $_POST['idade'];
     $email = $_POST['email'];
 
     // Chama a função para adicionar cliente
     adicionarCliente($nome, $idade, $email);
-    
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verifica se o formulário de logout foi enviado
+    if (isset($_POST['logout']) && $_POST['logout'] == 1) {
+        session_destroy();
+        header("Location: http://127.0.0.1/login-php/Application/views/user/login.php");
+        exit();
+    }
 }
 $clientes = obterClientes();
 ?>
@@ -39,7 +46,10 @@ $clientes = obterClientes();
         </div>
         <div class="new-user">
             <a href="/login-php/Application/views/user/create.php">Novo funcionário</a>
-            <a href="/login-php/Application/views/user/login.php">Sair</a>
+            <form method="POST">
+                <input type="hidden" name="logout" value="1">
+                <button type="submit" class="btnLogout">Sair</button>
+            </form>
         </div>
     </nav>
     <div class="diviser-line"></div>
@@ -79,7 +89,7 @@ $clientes = obterClientes();
             <span class="close">&times;</span>
             <div class="form">
                 <form method="POST" class="content-form">
-                <input type="hidden" name="submit" value="1">
+                    <input type="hidden" name="submit" value="1">
 
                     <div class="form-group">
                         <label for="user">Nome</label>
@@ -93,39 +103,13 @@ $clientes = obterClientes();
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" autocomplete="off">
                     </div>
-                    <button type="submit" class="btn-adicionar" name="submit">Adicionar</button>
+                    <button type="submit" class="btn-adicionar" name="submitForm">Adicionar</button>
                 </form>
             </div>
 
         </div>
     </div>
-    <script>
-    // Obtém o modal
-    var modal = document.getElementById('myModal');
-
-    // Obtém o botão que abre o modal
-    var btn = document.querySelector('.addCliente');
-
-    // Obtém o elemento <span> que fecha o modal
-    var span = document.getElementsByClassName('close')[0];
-
-    // Quando o usuário clica no botão, abre o modal
-    btn.onclick = function() {
-        modal.style.display = 'block';
-    }
-
-    // Quando o usuário clica no <span> (x), fecha o modal
-    span.onclick = function() {
-        modal.style.display = 'none';
-    }
-
-    // Quando o usuário clica fora do modal, fecha-o
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-    </script>
+<script src="/login-php/public/assets/js/painelModal.js"></script>
 </body>
 
 </html>

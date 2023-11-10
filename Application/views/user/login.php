@@ -19,12 +19,18 @@
         <form action="/login-php/Application\controllers\loginController.php" method="POST" class="content-form">
             <div class="form-group">
                 <label for="user">Usuário</label>
-                <input type="text" id="user" name="username" autocomplete="off">
+                <input type="text" id="user" name="user" autocomplete="off">
             </div>
             <div class="form-group">
                 <label for="pass">Senha</label>
-                <input type="password" id="pass" name="password" autocomplete="off">
+                <input type="password" id="pass" name="senha" autocomplete="off">
             </div>
+            <?php
+                // Exibir mensagem de erro, se houver
+                if (isset($_GET['error'])) {
+                    echo "<p style='color: red;'>".$_GET['error']."</p>";
+                }
+            ?>
             <button type="submit" class="btn-login">Login</button>
 
         </form>

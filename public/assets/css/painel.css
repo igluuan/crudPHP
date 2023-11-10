@@ -43,7 +43,15 @@ a {
     text-decoration: none;
     color: white;
 }
-
+.btnLogout{
+    background-color:  #449e48;
+    font-size: 1.3em;
+    border: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
 .addCliente {
     background-color: #3dbc40;
     font-size: 1.3em;
