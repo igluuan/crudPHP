@@ -1,5 +1,5 @@
 <?php
-include( 'C:\xampp\htdocs\login-php\Application\controllers\crudController.php');
+include('C:\xampp\htdocs\login-php\Application\controllers\crudController.php');
 session_start();
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
@@ -32,7 +32,7 @@ $clientes = obterClientes();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/login-php/public/assets/css/painel.css">
+    <link rel="stylesheet" href="/public/assets/css/painel.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
@@ -42,7 +42,9 @@ $clientes = obterClientes();
 <body>
     <nav class="nav">
         <div class="box-user">
-            <h1><span style="color:white;">Bem vindo,</span> <?php echo $username; ?>!</h1>
+            <h1><span style="color:white;">Bem vindo,</span>
+                <?php echo $username; ?>!
+            </h1>
         </div>
         <div class="new-user">
             <a href="/login-php/Application/views/user/create.php">Novo funcionário</a>
@@ -65,17 +67,23 @@ $clientes = obterClientes();
                 </tr>
             </thead>
             <tbody>
-                <?php if (is_array($clientes) && count($clientes) > 0) : ?>
-                <?php foreach ($clientes as $cliente) : ?>
+                <?php if (is_array($clientes) && count($clientes) > 0): ?>
+                <?php foreach ($clientes as $cliente): ?>
                 <tr>
-                    <td><?php echo $cliente['nome']; ?></td>
-                    <td><?php echo $cliente['idade']; ?> anos</td>
-                    <td><?php echo $cliente['email']; ?></td>
+                    <td>
+                        <?php echo $cliente['nome']; ?>
+                    </td>
+                    <td>
+                        <?php echo $cliente['idade']; ?> anos
+                    </td>
+                    <td>
+                        <?php echo $cliente['email']; ?>
+                    </td>
                     <td><a href='editar.php?id=<?php echo $cliente['id']; ?>'>Editar</a> | <a
                             href='excluir.php?id=<?php echo $cliente['id']; ?>'>Excluir</a></td>
                 </tr>
                 <?php endforeach; ?>
-                <?php else : ?>
+                <?php else: ?>
                 <tr>
                     <td colspan='4'>Nenhum registro encontrado</td>
                 </tr>
@@ -109,7 +117,7 @@ $clientes = obterClientes();
 
         </div>
     </div>
-<script src="/login-php/public/assets/js/painelModal.js"></script>
+    <script src="/login-php/public/assets/js/painelModal.js"></script>
 </body>
 
 </html>
